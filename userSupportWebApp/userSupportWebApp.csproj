@@ -25,9 +25,4 @@
     <ProjectReference Include="..\Pages\Pages.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="Areas\Appeal\Pages\Appeals\" />
-  </ItemGroup>
-
 </Project>
