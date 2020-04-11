@@ -1,0 +1,4 @@
+1. Use Id not ID
+2. Classes are either abstract or sealed
+3. For all keys use string and not int
+4. Do not use constants directly in code
