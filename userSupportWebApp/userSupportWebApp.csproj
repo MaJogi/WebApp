@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UserSecretsId>aspnet-userSupportWebApp-D467F241-F5C0-42A7-9455-54D2C17D8B16</UserSecretsId>
+    <AssemblyName>WebApp.userSupportWebApp</AssemblyName>
+    <RootNamespace>WebApp.userSupportWebApp</RootNamespace>
   </PropertyGroup>
 
 
@@ -12,6 +14,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Facade\Facade.csproj" />
+    <ProjectReference Include="..\Infra\Infra.csproj" />
+    <ProjectReference Include="..\Pages\Pages.csproj" />
   </ItemGroup>
 
 </Project>
