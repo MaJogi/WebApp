@@ -1,0 +1,13 @@
+﻿@page
+@using WebApp.Pages.Extensions
+@model userSupportWebApp.Areas.SupportApp.Pages.Requests.CreateModel
+
+@{
+    Layout = "_Create";
+}
+
+<h1>New request</h1>
+
+<body>
+@Html.EditControlsFor(model => model.Item.Description)
+</body>

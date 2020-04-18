@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using userSupportWebApp.Data;
-using WebApp.Domain.Appeal;
+using WebApp.Domain.Request;
 using WebApp.Infra;
-using WebApp.Infra.Appeal;
+using WebApp.Infra.Request;
 using WebApp.userSupportWebApp.Data;
 
 namespace WebApp.userSupportWebApp
@@ -28,12 +28,12 @@ namespace WebApp.userSupportWebApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<SupportAppDbContext>(options =>
+            services.AddDbContext<RequestDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddScoped<IAppealRepository, AppealRepository>();
+            services.AddScoped<IRequestRepository, RequestRepository>();
             services.AddRazorPages();
         }
 

@@ -1,0 +1,16 @@
+﻿@page
+@using WebApp.Pages.Extensions
+@model userSupportWebApp.Areas.SupportApp.Pages.Requests.EditModel
+
+
+@{
+    Layout = "_Edit";
+}
+
+<body>
+    <input type="hidden" asp-for="Item.Id" />
+    @*<input type="hidden" asp-for="Item.EntryDate"/>
+    <input type="hidden" asp-for="Item.SolvedDate" />*@
+    @Html.EditControlsFor(model => model.Item.Description)
+    @Html.EditControlsFor(model => model.Item.EntryDate)
+</body>

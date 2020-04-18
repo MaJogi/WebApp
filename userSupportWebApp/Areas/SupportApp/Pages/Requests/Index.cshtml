@@ -1,0 +1,55 @@
+﻿@page
+@using WebApp.Core
+@using WebApp.Pages.Extensions
+@model userSupportWebApp.Areas.SupportApp.Pages.Requests.IndexModel
+
+@{
+    //ViewData["Title"] = "Index";
+    Layout = "_Index";
+    var page = "/SupportApp/Requests";
+}
+
+@section Create
+{
+    @Html.HypertextLinkFor(string.Empty, new Link(Constants.CreateNewLinkTitle, $"{page}/Create"))
+}
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.SearchString" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<body>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                @Html.TableHeaderFor(
+                    new Link(Html.DisplayNameFor(model => model.Items[0].Id), $"{page}?sortOrder={Model.BillNumberSort}"),
+                    new Link(Html.DisplayNameFor(model => model.Item.Description), $"{page}?sortOrder={Model.CountryIdSort}"),
+                    new Link(Html.DisplayNameFor(model => model.Item.EntryDate), $"{page}?sortOrder={Model.DeliveryNumberSort}"),
+                    new Link(Html.DisplayNameFor(model => model.Item.DeadLine), $"{page}?sortOrder={Model.EstimatedArrivalSort}")
+                    )
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        @Html.TableRowFor(
+                            page,
+                            item.Id,
+                            Html.DisplayFor(modelItem => item.Id),
+                            Html.DisplayFor(modelItem => item.Description),
+                            Html.DisplayFor(modelItem => item.EntryDate),
+                            Html.DisplayFor(modelItem => item.DeadLine)
+                            )
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

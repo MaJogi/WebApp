@@ -20,7 +20,7 @@ namespace WebApp.Infra
 
         protected BaseRepository(DbContext context, DbSet<TData> set)
         {
-            this.context = context as SupportAppDbContext;
+            this.context = context as RequestDbContext;
             dbSet = set;
         }
 
