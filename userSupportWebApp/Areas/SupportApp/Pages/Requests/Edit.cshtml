@@ -9,8 +9,7 @@
 
 <body>
     <input type="hidden" asp-for="Item.Id" />
-    @*<input type="hidden" asp-for="Item.EntryDate"/>
-    <input type="hidden" asp-for="Item.SolvedDate" />*@
+    <input type="hidden" asp-for="Item.EntryDate" />
     @Html.EditControlsFor(model => model.Item.Description)
-    @Html.EditControlsFor(model => model.Item.EntryDate)
+    @Html.EditControlsFor(model => model.Item.DeadLine)
 </body>
