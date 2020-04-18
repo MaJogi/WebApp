@@ -1,39 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using WebApp.Data.Appeal;
-using WebApp.Infra;
+using WebApp.Domain.Appeal;
+using WebApp.Facade.Appeals;
+using WebApp.Pages.Appeal;
 
-namespace userSupportWebApp.Areas.Appeal.Pages.Appeals
+namespace WebApp.userSupportWebApp.Areas.Appeal.Pages.Appeals
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : AppealPage
     {
-        private readonly WebApp.Infra.SupportAppDbContext _context;
-
-        public DetailsModel(WebApp.Infra.SupportAppDbContext context)
-        {
-            _context = context;
-        }
-
-        public AppealData AppealData { get; set; }
+        public DetailsModel(IAppealRepository context) : base(context) {}
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            AppealData = await _context.Appeals.FirstOrDefaultAsync(m => m.Id == id);
+            Item = AppealViewFactory.Create(await _context.Get(id));
 
-            if (AppealData == null)
-            {
-                return NotFound();
-            }
+            if (Item == null) return NotFound();
+
             return Page();
         }
     }

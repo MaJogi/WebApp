@@ -8,7 +8,7 @@ namespace WebApp.Data.Common
 {
     public class UniqueEntityData : Archetype
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
     }
 }

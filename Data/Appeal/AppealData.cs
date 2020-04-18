@@ -8,7 +8,7 @@ namespace WebApp.Data.Appeal
     public class AppealData : UniqueEntityData
     {
         public string Description { get; set; }
-        public DateTime EntryDate { get; set; } = DateTime.Now;
-        public DateTime SolvedDate { get; set; }
+        public DateTime? EntryDate { get; set; }
+        public DateTime? Deadline { get; set; }
     }
 }

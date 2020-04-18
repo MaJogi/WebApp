@@ -1,57 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using WebApp.Data.Appeal;
-using WebApp.Infra;
+using WebApp.Domain.Appeal;
+using WebApp.Facade.Appeals;
+using WebApp.Pages.Appeal;
 
-namespace userSupportWebApp.Areas.Appeal.Pages.Appeals
+namespace WebApp.userSupportWebApp.Areas.Appeal.Pages.Appeals
 {
-    public class DeleteModel : PageModel
+    public class DeleteModel : AppealPage
     {
-        private readonly WebApp.Infra.SupportAppDbContext _context;
 
-        public DeleteModel(WebApp.Infra.SupportAppDbContext context)
-        {
-            _context = context;
-        }
-
-        [BindProperty]
-        public AppealData AppealData { get; set; }
+        public DeleteModel(IAppealRepository context) : base(context) { }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            AppealData = await _context.Appeals.FirstOrDefaultAsync(m => m.Id == id);
+            Item = AppealViewFactory.Create(await _context.Get(id));
 
-            if (AppealData == null)
-            {
-                return NotFound();
-            }
+            if (Item == null) return NotFound();
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            AppealData = await _context.Appeals.FindAsync(id);
-
-            if (AppealData != null)
-            {
-                _context.Appeals.Remove(AppealData);
-                await _context.SaveChangesAsync();
-            }
+            var o = await _context.Get(id);
+            await _context.DeleteObject(o);
 
             return RedirectToPage("./Index");
         }

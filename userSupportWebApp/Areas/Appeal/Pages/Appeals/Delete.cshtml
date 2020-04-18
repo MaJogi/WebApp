@@ -13,27 +13,27 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AppealData.Description)
+            @Html.DisplayNameFor(model => model.Item.Description)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AppealData.Description)
+            @Html.DisplayFor(model => model.Item.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AppealData.EntryDate)
+            @Html.DisplayNameFor(model => model.Item.EntryDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AppealData.EntryDate)
+            @Html.DisplayFor(model => model.Item.EntryDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AppealData.SolvedDate)
+            @Html.DisplayNameFor(model => model.Item.DeadLine)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AppealData.SolvedDate)
+            @Html.DisplayFor(model => model.Item.DeadLine)
         </dd>
     </dl>
     
     <form method="post">
-        <input type="hidden" asp-for="AppealData.Id" />
+        <input type="hidden" asp-for="Item.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="./Index">Back to List</a>
     </form>

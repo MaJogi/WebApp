@@ -1,43 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using WebApp.Data.Appeal;
-using WebApp.Infra;
+using WebApp.Domain.Appeal;
+using WebApp.Facade.Appeals;
+using WebApp.Pages.Appeal;
 
-namespace userSupportWebApp.Areas.Appeal.Pages.Appeals
+namespace WebApp.userSupportWebApp.Areas.Appeal.Pages.Appeals
 {
-    public class CreateModel : PageModel
+    public class CreateModel : AppealPage
     {
-        private readonly WebApp.Infra.SupportAppDbContext _context;
 
-        public CreateModel(WebApp.Infra.SupportAppDbContext context)
-        {
-            _context = context;
-        }
+        public CreateModel(IAppealRepository context) : base(context){ }
+        public IActionResult OnGet() => Page();
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
-
-        [BindProperty]
-        public AppealData AppealData { get; set; }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
-            _context.Appeals.Add(AppealData);
-            await _context.SaveChangesAsync();
+            var obj = AppealViewFactory.Create(Item);
+            obj.Data.Id = Guid.NewGuid().ToString();
+            obj.Data.EntryDate = DateTime.Now;
+            // obj.Data.Id = Guid.NewGuid().ToString(); // Lets see, if database will generate it by itself
+            await _context.AddObject(obj);
 
             return RedirectToPage("./Index");
         }

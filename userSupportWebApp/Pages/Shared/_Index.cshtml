@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = @Model.PageTitle;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    @RenderSection("Create")
+</p>
+
+
+@RenderBody()
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+
+<div class="form-inline">
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="1"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-link @prevDisabled">
+        @*asetab klass'i "disabled", kui on esimesel leheküljel*@
+        First
+    </a>
+    &nbsp;
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-link @prevDisabled">
+        Previous
+    </a>
+    &nbsp;
+    Page @Model.PageIndex of @Model.TotalPages
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-link @nextDisabled">
+        Next
+    </a>
+    &nbsp;
+    <a asp-page="./Index"
+       asp-route-sortOrder="@Model.CurrentSort"
+       asp-route-pageIndex="@(Model.TotalPages)"
+       asp-route-currentFilter="@Model.CurrentFilter"
+       class="btn btn-link @prevDisabled">
+        Last
+    </a>
+</div>
