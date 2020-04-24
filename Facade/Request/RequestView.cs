@@ -13,5 +13,7 @@ namespace WebApp.Facade.Request
         public DateTime? EntryDate { get; set; }
         [DisplayName("Request deadline")]
         public DateTime? DeadLine { get; set; }
+        public bool Solved { get; set; }
+        public bool ExpiringOrHasExpired { get; set; }
     }
 }

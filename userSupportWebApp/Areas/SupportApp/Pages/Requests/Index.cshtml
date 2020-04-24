@@ -23,22 +23,22 @@
         </p>
     </div>
 </form>
-
+<button class="btn btn-secondary" onClick="window.location.reload();">Refresh Page</button>
 <body>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 @Html.TableHeaderFor(
-                    new Link(Html.DisplayNameFor(model => model.Items[0].Id), $"{page}?sortOrder={Model.BillNumberSort}"),
-                    new Link(Html.DisplayNameFor(model => model.Item.Description), $"{page}?sortOrder={Model.CountryIdSort}"),
-                    new Link(Html.DisplayNameFor(model => model.Item.EntryDate), $"{page}?sortOrder={Model.DeliveryNumberSort}"),
-                    new Link(Html.DisplayNameFor(model => model.Item.DeadLine), $"{page}?sortOrder={Model.EstimatedArrivalSort}")
+                    new Link(Html.DisplayNameFor(model => model.Items[0].Id), $"{page}?sortOrder={Model.CurrentSort}"),
+                    new Link(Html.DisplayNameFor(model => model.Item.Description), $"{page}?sortOrder={Model.CurrentSort}"),
+                    new Link(Html.DisplayNameFor(model => model.Item.EntryDate), $"{page}?sortOrder={Model.EntryDateSort}"),
+                    new Link(Html.DisplayNameFor(model => model.Item.DeadLine), $"{page}?sortOrder={Model.RequestDeadlineSort}")
                     )
             </thead>
             <tbody>
                 @foreach (var item in Model.Items)
                 {
-                    <tr>
+                    <tr id="@(item.ExpiringOrHasExpired ? "expiredColor" : "")">
                         @Html.TableRowFor(
                             page,
                             item.Id,

@@ -14,7 +14,8 @@ namespace WebApp.Infra.Migrations
                     Id = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     EntryDate = table.Column<DateTime>(nullable: true),
-                    Deadline = table.Column<DateTime>(nullable: true)
+                    Deadline = table.Column<DateTime>(nullable: true),
+                    Solved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

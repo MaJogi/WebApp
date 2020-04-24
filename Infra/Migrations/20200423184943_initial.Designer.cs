@@ -10,7 +10,7 @@ using WebApp.Infra;
 namespace WebApp.Infra.Migrations
 {
     [DbContext(typeof(RequestDbContext))]
-    [Migration("20200418095028_initial")]
+    [Migration("20200423184943_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,9 @@ namespace WebApp.Infra.Migrations
 
                     b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Solved")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

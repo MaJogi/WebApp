@@ -13,7 +13,7 @@ namespace WebApp.Infra
         where TData : UniqueEntityData, new()
         where TObject : Entity<TData>, new()
     {
-        public int PageSize { get; set; } = 5;
+        public int PageSize { get; set; } = 100;
         public int TotalPages => GetTotalPages(PageSize);
 
         public int PageIndex { get; set; }

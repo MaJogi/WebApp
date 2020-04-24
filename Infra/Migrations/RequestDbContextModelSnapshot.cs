@@ -33,6 +33,9 @@ namespace WebApp.Infra.Migrations
                     b.Property<DateTime?>("EntryDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Solved")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Request");

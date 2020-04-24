@@ -21,6 +21,8 @@ namespace WebApp.Pages.Extensions
             htmlStrings.Add(new HtmlString($"<a href=\"{page}/Details?id={index}\">{Constants.DetailsLinkTitle}</a>"));
             htmlStrings.Add(" | ");
             htmlStrings.Add(new HtmlString($"<a href=\"{page}/Delete?id={index}\">{Constants.DeleteLinkTitle}</a>"));
+            htmlStrings.Add(" | ");
+            htmlStrings.Add(new HtmlString($"<a href=\"{page}/?handler=MarkDone&id={index}\">Mark As Done</a>"));
             htmlStrings.Add(new HtmlString("</td>"));
             return new HtmlContentBuilder(htmlStrings);
         }

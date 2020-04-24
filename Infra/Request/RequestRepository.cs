@@ -8,7 +8,6 @@ namespace WebApp.Infra.Request
     {
         public RequestRepository(RequestDbContext context) : base(context,
             context.Requests) { }
-
         protected internal override Domain.Request.Request toDomainObject(RequestData data) => new Domain.Request.Request(data);
 
         protected internal override IQueryable<RequestData> addFiltering(IQueryable<RequestData> query)

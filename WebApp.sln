@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userSupportWebApp", "userSupportWebApp\userSupportWebApp.csproj", "{4A1B0139-237F-46AD-9D0D-998FA700AED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userSupportWebApp", "userSupportWebApp\userSupportWebApp.csproj", "{4A1B0139-237F-46AD-9D0D-998FA700AED2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3675EB5A-B4F1-45FF-9F93-4F316600870C}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,21 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.txt = readme.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aids", "Aids\Aids.csproj", "{85782DD5-AFFB-4DD7-9D26-D1257C3CB001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aids", "Aids\Aids.csproj", "{85782DD5-AFFB-4DD7-9D26-D1257C3CB001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{28EF7E94-81AE-408E-8821-629382F51B29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{28EF7E94-81AE-408E-8821-629382F51B29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{4E186F3B-0192-473B-8A75-1B17F11242F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{4E186F3B-0192-473B-8A75-1B17F11242F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C3458BF9-2C8F-4728-A365-1AC48A833923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{C3458BF9-2C8F-4728-A365-1AC48A833923}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csproj", "{D3734A19-333B-4AF5-ACA4-D250A4B07BB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade", "Facade\Facade.csproj", "{D3734A19-333B-4AF5-ACA4-D250A4B07BB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{096FEF02-1F09-4D4F-83CC-EC166E10D3D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{096FEF02-1F09-4D4F-83CC-EC166E10D3D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "Pages\Pages.csproj", "{FDD8B680-09C1-4495-B033-37C7514452DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pages", "Pages\Pages.csproj", "{FDD8B680-09C1-4495-B033-37C7514452DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{98672D0A-9631-4049-A918-01106ECB50C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{98672D0A-9631-4049-A918-01106ECB50C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

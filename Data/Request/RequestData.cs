@@ -8,5 +8,6 @@ namespace WebApp.Data.Request
         public string Description { get; set; }
         public DateTime? EntryDate { get; set; }
         public DateTime? Deadline { get; set; }
+        public bool Solved { get; set; }
     }
 }
