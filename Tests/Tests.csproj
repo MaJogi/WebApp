@@ -29,10 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Common\" />
-    <Folder Include="Data\Request\" />
     <Folder Include="Docs\" />
-    <Folder Include="Domain\Request\" />
+    <Folder Include="Domain\Common\" />
     <Folder Include="Facade\" />
     <Folder Include="Infra\Request\" />
   </ItemGroup>

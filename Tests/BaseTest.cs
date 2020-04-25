@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApp.Aids;
 
@@ -9,6 +11,9 @@ namespace WebApp.Tests
     {
         protected TClass Obj;
         protected Type Type;
+        private List<string> members { get; set; }
+        private const string notTested = "<{0}> is not tested";
+        private const string notSpecified = "Class is not specified";
 
         [TestInitialize]
         public virtual void TestInitialize()
@@ -22,6 +27,32 @@ namespace WebApp.Tests
             Assert.AreEqual(typeof(TBaseClass), Type.BaseType);
         }
 
+        [TestMethod]
+        public void IsTested()
+        {
+            if (Type == null) Assert.Inconclusive(notSpecified);
+            var m = GetClass.Members(Type, PublicBindingFlagsFor.DeclaredMembers);
+            members = m.Select(e => e.Name).ToList();
+            removeTested();
+
+            if (members.Count == 0) return;
+            Assert.Fail(notTested, members[0]);
+        }
+
+        private void removeTested()
+        {
+            var tests = GetType().GetMembers().Select(e => e.Name).ToList();
+
+            for (var i = members.Count; i > 0; i--)
+            {
+                var m = members[i - 1] + "Test";
+                var isTested = tests.Find(o => o == m);
+
+                if (string.IsNullOrEmpty(isTested)) continue;
+                members.RemoveAt(i - 1);
+            }
+        }
+
         protected static void IsNullableProperty<T>(Func<T> get, Action<T> set)
         {
             IsProperty(get, set);
@@ -32,7 +63,10 @@ namespace WebApp.Tests
         protected static void IsProperty<T>(Func<T> get, Action<T> set)
         {
             var d = (T)GetRandom.Value(typeof(T));
-            Assert.AreNotEqual(d, get());
+            if (typeof(T) != typeof(bool) )
+            {
+                Assert.AreNotEqual(d, get());
+            }
             set(d);
             Assert.AreEqual(d, get());
         }

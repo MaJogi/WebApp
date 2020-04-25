@@ -3,7 +3,7 @@ using WebApp.Data.Common;
 
 namespace WebApp.Data.Request
 {
-    public sealed class RequestData : UniqueEntityData
+    public class RequestData : UniqueEntityData
     {
         public string Description { get; set; }
         public DateTime? EntryDate { get; set; }

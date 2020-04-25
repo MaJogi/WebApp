@@ -44,7 +44,7 @@ namespace WebApp.Infra
 
         internal Expression<Func<TData, object>> lambdaExpression(PropertyInfo p)
         {
-            var param = Expression.Parameter(typeof(TData), "x"); 
+            var param = Expression.Parameter(typeof(TData), "Param_0"); 
             var property = Expression.Property(param, p); 
             var body = Expression.Convert(property, typeof(object));
             return Expression.Lambda<Func<TData, object>>(body, param);
