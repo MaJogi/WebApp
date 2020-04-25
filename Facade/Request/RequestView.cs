@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApp.Facade.Request
 {
-    public class RequestView
+    public sealed class RequestView
     {
         public string Id { get; set; }
         public string Description { get; set; }
