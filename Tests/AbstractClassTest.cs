@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace WebApp.Tests
 {
     [TestClass]
-    public abstract class AbstractClassTest<TClass, TBaseClass> : BaseTest<TClass, TBaseClass>
+    public abstract class AbstractClassTest<TClass, TBaseClass> : BaseClassTest<TClass, TBaseClass>
     {
         [TestMethod]
         public void IsAbstract()

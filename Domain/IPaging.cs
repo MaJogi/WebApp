@@ -10,5 +10,6 @@ namespace WebApp.Domain
         int PageIndex { get; set; }
         bool HasNextPage { get; }
         bool HasPreviousPage { get;  }
+        int TotalPages { get; }
     }
 }

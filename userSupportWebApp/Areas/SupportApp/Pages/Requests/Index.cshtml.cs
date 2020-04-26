@@ -69,7 +69,8 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
                 }
                 
             }
-
+            
+            TotalPages = _context.TotalPages;
             HasNextPage = _context.HasNextPage;
             HasPreviousPage = _context.HasPreviousPage;
         }
@@ -80,7 +81,6 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
 
         public bool HasPreviousPage { get; set; }
         public bool HasNextPage { get; set; }
-
         public string SearchString { get; set; }
     }
 }

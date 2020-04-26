@@ -7,7 +7,7 @@ using WebApp.Aids;
 namespace WebApp.Tests
 {
     [TestClass]
-    public abstract class BaseTest<TClass, TBaseClass>
+    public abstract class BaseClassTest<TClass, TBaseClass> : BaseTests
     {
         protected TClass Obj;
         protected Type Type;
@@ -80,5 +80,10 @@ namespace WebApp.Tests
             var actual = property.GetValue(o);
             Assert.AreEqual(expected, actual);
         }
+    }
+
+    public class BaseTests
+    {
+
     }
 }

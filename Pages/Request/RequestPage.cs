@@ -26,6 +26,6 @@ namespace WebApp.Pages.Request
         public string CurrentSort { get; set; } = "Current sort";
         public string CurrentFilter { get; set; } = "Current filter";
         public int PageIndex { get; set; } = 3;
-        public int TotalPages { get; set; } = 10;
+        public int TotalPages { get; set; } /*= 10;*/
     }
 }

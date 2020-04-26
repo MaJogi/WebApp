@@ -7,7 +7,7 @@ using WebApp.Data.Request;
 namespace WebApp.Tests.Domain.Request
 {
     [TestClass]
-    public class RequestTests : BaseTest<WebApp.Domain.Request.Request, object>
+    public class RequestTests : SealedClassTest<WebApp.Domain.Request.Request, object>
     {
         protected object ObjL;
 

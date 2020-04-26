@@ -12,6 +12,7 @@ namespace WebApp.Infra.Request
 
         protected internal override IQueryable<RequestData> addFiltering(IQueryable<RequestData> query)
         {
+            query = query.Where(s => s.Solved == false);
             if (string.IsNullOrEmpty(SearchString)) return query;
             return query.Where(s => s.Description.Contains(SearchString)
                                     || s.EntryDate != null && s.EntryDate.ToString().Contains(SearchString)

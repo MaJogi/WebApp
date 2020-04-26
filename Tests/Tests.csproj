@@ -30,8 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Docs\" />
-    <Folder Include="Domain\Common\" />
-    <Folder Include="Facade\" />
+    <Folder Include="Facade\Request\" />
     <Folder Include="Infra\Request\" />
   </ItemGroup>
 
