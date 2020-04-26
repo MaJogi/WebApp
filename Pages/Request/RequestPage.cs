@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApp.Aids;
+using WebApp.Data.Request;
 using WebApp.Domain.Request;
 using WebApp.Facade.Request;
 
@@ -26,9 +29,21 @@ namespace WebApp.Pages.Request
         public string PageTitle { get; set; }
         public string PageSubTitle { get; set; }
         public string CurrentSort { get; set; } = "Current sort";
+       
+
         public string CurrentFilter { get; set; } = "Current filter";
-        public int PageIndex { get; set; } = 3;
-        public int TotalPages { get; set; } /*= 10;*/
+        public string SearchString { get; set; }
+
+        public bool HasPreviousPage => _context.HasPreviousPage;
+        public bool HasNextPage => _context.HasNextPage;
+        public int PageIndex 
+        { 
+            get => _context.PageIndex;
+            set => _context.PageIndex = value;
+        }
+        public int TotalPages => _context.TotalPages;
+        private const string DEFAULT_SORT = "Deadline";
+
 
         protected internal async Task<bool> addObject()
         {
@@ -71,11 +86,7 @@ namespace WebApp.Pages.Request
 
         protected internal async Task getObject(string id)
         {
-            //if (id == null) return NotFound();
-
             Item = RequestViewFactory.Create(await _context.Get(id));
-
-            //if (Item == null) return NotFound();
         }
 
         protected internal async Task deleteObject(string id)
@@ -84,6 +95,53 @@ namespace WebApp.Pages.Request
             await _context.DeleteObject(o);
         }
 
-        
+        public string GetSortString(Expression<Func<RequestData, object>> e, string page)
+        {
+            //$"{page}?sortOrder={Model.CurrentSort}&currentFilter={Model.CurrentFilter}"
+            var name = GetMember.Name(e);
+            string sortOrder;
+            if (string.IsNullOrEmpty(CurrentSort)) sortOrder = name;
+            else if (!CurrentSort.StartsWith(name)) sortOrder = name;
+            else if (CurrentSort.EndsWith("_desc")) sortOrder = name;
+            else sortOrder = name + "_desc";
+
+            return $"{page}?sortOrder={sortOrder}&currentFilter={CurrentFilter}";
+        }
+
+        protected internal async Task getList(string sortOrder,
+            string currentFilter, string searchString, int? pageIndex)
+        {
+            if (sortOrder == null)
+                sortOrder = DEFAULT_SORT;
+
+            sortOrder = string.IsNullOrEmpty(sortOrder) ? "Deadline" : sortOrder;
+            CurrentSort = sortOrder;
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            _context.SortOrder = sortOrder;
+            SearchString = CurrentFilter;
+            _context.SearchString = searchString;
+
+            PageIndex = pageIndex ?? 1;
+
+
+            var l = await _context.Get();
+            Items = new List<RequestView>();
+
+            foreach (var element in l)
+            {
+                if (element.Data.Solved == false) Items.Add(RequestViewFactory.Create(element));
+            }
+        }
     }
 }

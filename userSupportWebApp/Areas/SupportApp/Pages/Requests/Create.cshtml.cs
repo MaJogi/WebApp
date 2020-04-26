@@ -15,12 +15,6 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
         public async Task<IActionResult> OnPostAsync()
         {
             if (!await addObject()) return Page();
-            //if (!ModelState.IsValid) return Page();
-
-            //var obj = RequestViewFactory.Create(Item);
-            //obj.Data.Id = Guid.NewGuid().ToString();
-            //obj.Data.EntryDate = DateTime.Now;
-            //await _context.AddObject(obj);
 
             return RedirectToPage("./Index");
         }

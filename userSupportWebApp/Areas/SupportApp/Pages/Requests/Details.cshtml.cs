@@ -14,7 +14,6 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
         {
             if (id == null) return NotFound();
             await getObject(id);
-            //Item = RequestViewFactory.Create(await _context.Get(id));
             if (Item == null) return NotFound();
 
             return Page();

@@ -25,8 +25,6 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
             if (id == null) return NotFound();
 
             await deleteObject(id);
-            //var o = await _context.Get(id);
-            //await _context.DeleteObject(o);
 
             return RedirectToPage("./Index");
         }
