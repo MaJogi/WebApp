@@ -14,9 +14,7 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
         public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null) return NotFound();
-
-            Item = RequestViewFactory.Create(await _context.Get(id));
-
+            await getObject(id);
             if (Item == null) return NotFound();
 
             return Page();
@@ -26,8 +24,9 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
         {
             if (id == null) return NotFound();
 
-            var o = await _context.Get(id);
-            await _context.DeleteObject(o);
+            await deleteObject(id);
+            //var o = await _context.Get(id);
+            //await _context.DeleteObject(o);
 
             return RedirectToPage("./Index");
         }

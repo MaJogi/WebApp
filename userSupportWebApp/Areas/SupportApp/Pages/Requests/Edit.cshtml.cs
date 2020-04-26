@@ -15,7 +15,8 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
         {
             if (id == null) return NotFound();
 
-            Item = RequestViewFactory.Create(await _context.Get(id));
+            await getObject(id);
+            //Item = RequestViewFactory.Create(await _context.Get(id));
 
             if (Item == null) return NotFound();
 
@@ -24,9 +25,11 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid) return Page();
+            if (!await updateObject()) return Page();
+            ;
+            //if (!ModelState.IsValid) return Page();
 
-            await _context.UpdateObject(RequestViewFactory.Create(Item));
+            //await _context.UpdateObject(RequestViewFactory.Create(Item));
 
             return RedirectToPage("./Index");
         }

@@ -13,9 +13,8 @@ namespace WebApp.userSupportWebApp.Areas.SupportApp.Pages.Requests
         public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null) return NotFound();
-
-            Item = RequestViewFactory.Create(await _context.Get(id));
-
+            await getObject(id);
+            //Item = RequestViewFactory.Create(await _context.Get(id));
             if (Item == null) return NotFound();
 
             return Page();
