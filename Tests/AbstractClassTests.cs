@@ -6,12 +6,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace WebApp.Tests
 {
     [TestClass]
-    public abstract class SealedClassTest<TClass, TBaseClass> : ClassTest<TClass, TBaseClass> where TClass : new()
+    public abstract class AbstractClassTests<TClass, TBaseClass> : BaseClassTests<TClass, TBaseClass>
     {
         [TestMethod]
-        public void IsSealed()
+        public void IsAbstract()
         {
-            Assert.IsTrue(Type.IsSealed);
+            Assert.IsTrue(Type.IsAbstract);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace WebApp.Facade.Request
                 Id = v.Id,
                 Description = v.Description,
                 EntryDate = v.EntryDate,
-                Deadline = v.DeadLine,
+                DeadLine = v.DeadLine,
                 Solved = v.Solved
                 
             };
@@ -30,9 +30,9 @@ namespace WebApp.Facade.Request
                 Id = obj.Data.Id,
                 Description = obj.Data.Description,
                 EntryDate = obj.Data.EntryDate,
-                DeadLine = obj.Data.Deadline,
+                DeadLine = obj.Data.DeadLine,
                 Solved = obj.Data.Solved,
-                ExpiringOrHasExpired = obj.Data.Deadline.Value.AddHours(-1) <= DateTime.Now ? true : false
+                ExpiringOrHasExpired = obj.Data.DeadLine.Value.AddHours(-1) <= DateTime.Now ? true : false
 
             };
             return view;

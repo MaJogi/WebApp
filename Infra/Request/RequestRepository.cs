@@ -16,7 +16,7 @@ namespace WebApp.Infra.Request
             if (string.IsNullOrEmpty(SearchString)) return query;
             return query.Where(s => s.Description.Contains(SearchString)
                                     || s.EntryDate != null && s.EntryDate.ToString().Contains(SearchString)
-                                    || s.Deadline != null && s.Deadline.ToString().Contains(SearchString)
+                                    || s.DeadLine != null && s.DeadLine.ToString().Contains(SearchString)
                                     );
         }
     }

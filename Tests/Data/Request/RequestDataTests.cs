@@ -5,7 +5,7 @@ using WebApp.Data.Request;
 namespace WebApp.Tests.Data.Request
 {
     [TestClass]
-    public class RequestDataTests : ClassTest<RequestData, UniqueEntityData>
+    public class RequestDataTests : ClassTests<RequestData, UniqueEntityData>
     {
         private class TestClass : RequestData { }
 
@@ -29,9 +29,9 @@ namespace WebApp.Tests.Data.Request
         }
 
         [TestMethod]
-        public void DeadlineTest()
+        public void DeadLineTest()
         {
-            IsProperty(() => Obj.Deadline, x => Obj.Deadline = x);
+            IsProperty(() => Obj.DeadLine, x => Obj.DeadLine = x);
         }
 
         [TestMethod]

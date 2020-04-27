@@ -15,7 +15,7 @@ using WebApp.Infra;
 namespace WebApp.Tests.Infra
 {
     [TestClass]
-    public class SortedRepositoryTests : AbstractClassTest<SortedRepository<Request, RequestData>, BaseRepository<Request, RequestData>>
+    public class SortedRepositoryTests : AbstractClassTests<SortedRepository<Request, RequestData>, BaseRepository<Request, RequestData>>
     {
         private class TestClass : SortedRepository<Request, RequestData>
         {
@@ -78,7 +78,7 @@ namespace WebApp.Tests.Infra
 
 
             test(dataSet, GetMember.Name<RequestData>(x => x.Id));
-            test(dataSet, GetMember.Name<RequestData>(x => x.Deadline));
+            test(dataSet, GetMember.Name<RequestData>(x => x.DeadLine));
             test(dataSet, GetMember.Name<RequestData>(x => x.Description));
             test(dataSet, GetMember.Name<RequestData>(x => x.EntryDate));
             test(dataSet, GetMember.Name<RequestData>(x => x.Solved));
@@ -88,13 +88,13 @@ namespace WebApp.Tests.Infra
         {
             string s;
             testCreateExpression(GetMember.Name<RequestData>(x => x.Id));
-            testCreateExpression(GetMember.Name<RequestData>(x => x.Deadline));
+            testCreateExpression(GetMember.Name<RequestData>(x => x.DeadLine));
             testCreateExpression(GetMember.Name<RequestData>(x => x.Description));
             testCreateExpression(GetMember.Name<RequestData>(x => x.EntryDate));
             testCreateExpression(GetMember.Name<RequestData>(x => x.Solved));
 
             testCreateExpression(s = GetMember.Name<RequestData>(x => x.Id), s + Obj.DescendingString);
-            testCreateExpression(s = GetMember.Name<RequestData>(x => x.Deadline), s + Obj.DescendingString);
+            testCreateExpression(s = GetMember.Name<RequestData>(x => x.DeadLine), s + Obj.DescendingString);
             testCreateExpression(s = GetMember.Name<RequestData>(x => x.Description), s + Obj.DescendingString);
             testCreateExpression(s = GetMember.Name<RequestData>(x => x.EntryDate), s + Obj.DescendingString);
             testCreateExpression(s = GetMember.Name<RequestData>(x => x.Solved), s + Obj.DescendingString);
@@ -150,7 +150,7 @@ namespace WebApp.Tests.Infra
             test(null, null);
             test(null, string.Empty);
             test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Id)), s);
-            test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Deadline)), s);
+            test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.DeadLine)), s);
             test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Description)), s);
             test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.EntryDate)), s);
             test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Solved)), s);
@@ -158,7 +158,7 @@ namespace WebApp.Tests.Infra
             // Also descending ones
             test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Id)),
                 s + Obj.DescendingString);
-            test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Deadline)),
+            test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.DeadLine)),
                 s + Obj.DescendingString);
             test(typeof(RequestData).GetProperty(s = GetMember.Name<RequestData>(x => x.Description)),
                 s + Obj.DescendingString);
@@ -208,7 +208,7 @@ namespace WebApp.Tests.Infra
 
             test(dataSet, x => x.Id, "x => x.Id");
 
-            test(dataSet, x => x.Deadline, "x => Convert(x.Deadline, Object)");
+            test(dataSet, x => x.DeadLine, "x => Convert(x.Deadline, Object)");
             test(dataSet, x => x.EntryDate, "x => Convert(x.EntryDate, Object)");
             test(dataSet, x => x.Solved, "x => Convert(x.Solved, Object)");
             test(dataSet, x => x.Description, "x => x.Description");

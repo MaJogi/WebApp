@@ -6,7 +6,7 @@ using WebApp.Domain.Common;
 namespace WebApp.Tests.Domain.Common
 {
     [TestClass]
-    public class EntityTests : AbstractClassTest<Entity<RequestData>, object>
+    public class EntityTests : AbstractClassTests<Entity<RequestData>, object>
     {
         private class testClass : Entity<RequestData>
         {

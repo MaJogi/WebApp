@@ -8,7 +8,7 @@ using WebApp.Data.Common;
 namespace WebApp.Tests.Data.Common
 {
     [TestClass]
-    public class UniqueEntityDataTests : AbstractClassTest<UniqueEntityData, Archetype>
+    public class UniqueEntityDataTests : AbstractClassTests<UniqueEntityData, Archetype>
     {
         private class TestClass : UniqueEntityData { }
 

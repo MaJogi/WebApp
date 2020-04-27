@@ -31,7 +31,7 @@
                     new Link(Html.DisplayNameFor(model => model.Items[0].Id), $"{page}?sortOrder={Model.CurrentSort}&currentFilter={Model.CurrentFilter}"),
                     new Link(Html.DisplayNameFor(model => model.Item.Description), $"{page}?sortOrder={Model.CurrentSort}&currentFilter={Model.CurrentFilter}"),
                     new Link(Html.DisplayNameFor(model => model.Item.EntryDate), Model.GetSortString(m => m.EntryDate, page)),
-                    new Link(Html.DisplayNameFor(model => model.Item.DeadLine), Model.GetSortString(m => m.Deadline, page))
+                    new Link(Html.DisplayNameFor(model => model.Item.DeadLine), Model.GetSortString(m => m.DeadLine, page))
                     )
             </thead>
             <tbody>

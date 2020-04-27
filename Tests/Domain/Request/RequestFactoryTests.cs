@@ -8,7 +8,7 @@ using WebApp.Domain.Request;
 namespace WebApp.Tests.Domain.Request
 {
     [TestClass]
-    public class RequestFactoryTests : ClassTest<RequestFactory, object>
+    public class RequestFactoryTests : ClassTests<RequestFactory, object>
     {
         [TestMethod]
         public void CreateTest()
